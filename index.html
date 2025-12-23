@@ -1,41 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Required meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Monetag verification -->
   <meta name="monetag" content="0e14315eb68e0fe411c78cb2c6c15a02">
-    <meta charset="UTF-8">
 
-    <!-- 🔴 PASTE MONETAG META TAG BELOW (EXACTLY AS GIVEN BY MONETAG) -->
-    <!-- Example: <meta name="monetag" content="XXXXXXXXXXXX"> -->
-  
+  <title>Gauransh Official Site</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gauransh Official Site</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #0f0f0f;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .box {
-            max-width: 500px;
-            padding: 20px;
-            border-radius: 10px;
-            background: #1c1c1c;
-            box-shadow: 0 0 20px rgba(0,0,0,0.6);
-        }
-        h1 {
-            color: #00ff99;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.5;
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #11161d;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #00ff99;
+      --accent-2: #22d3ee;
+      --border: #1f2937;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1000px 400px at 80% -20%, rgba(34,211,238,0.15), transparent 60%),
+                  radial-gradient(800px 300px at -20% 20%, rgba(0,255,153,0.18), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: saturate(160%) blur(6px);
+      background: rgba(11, 15, 20, 0.6);
+      border-bottom: 1px solid var(--border);
+      z-index: 20;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .logo-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 6px 16px rgba(0,255,153,0.2), 0 4px 14px rgba(34,211,238,0.18);
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+    }
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: 0.2s ease;
+    }
+    .nav a:hover {
+      color: var(--accent);
+      background: rgba(34,211,238,0.08);
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(0,255,153,0.18), rgba(34,211,238,0.18));
+      border: 1px solid rgba(0,255,153,0.35);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,255,153,0.12);
+      border-color: rgba(34,211,238,0.5);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 70px 20px;
+    }
+    .hero-card {
+      width: 100%;
+      max-width: 860px;
+      background: linear-gradient(180deg, rgba(17,22,29,0.8), rgba(17,22,29,0.68));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px dashed rgba(34,211,238,0.35);
+      background: rgba(34,211,238,0.06);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .pill-dot {
+      width: 8px; height: 8px; border-radius: 999px; background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(0,255,153,0.12);
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4.8vw, 48px);
+      line-height: 1.1;
+      margin: 10px 0 12px;
+      letter-spacing: 0.2px;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(15px, 2.3vw, 18px);
+      max-width: 760px;
+      margin: 0 auto 22px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .btn {
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #0f1318;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+    .btn:hover {
+      border-color: rgba(0,255,153,0.45);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(0,255,153,0.2), rgba(34,211,238,0.2));
+      border: 1px solid rgba(0,255,153,0.45);
+    }
+
+    /* Features */
+    .section {
+      padding: 24px 20px 60px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 620px) {
+      .nav-links { display: none; }
+      .grid { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      transition: 0.2s ease;
+    }
+    .card:hover { transform: translateY(-2px); border-color: rgba(34,211,238,0.45); }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding: 22px 20px;
+      color: var(--muted);
+    }
+    .footer a { color: var(--muted); text-decoration: none; }
+    .footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <div class="logo-badge" aria-hidden="true"></div>
+          <span>Gauransh</span>
+        </div>
+        <div class="nav-links" role="navigation" aria-label="Main">
+          <a href="#home">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="cta" href="#contact">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero container">
+    <div class="hero-card">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Verified & policy‑friendly — built for speed and clarity
+      </div>
+      <h1>
+        Welcome to the <span class="accent">Gauransh Official Site</span>
+      </h1>
+      <p>
+        Clean, fast, and ad‑network ready. Explore projects, read tutorials, and follow updates —
+        all in a modern dark UI with responsive design.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn" href="#blog">Read the blog</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features / Projects -->
+  <section id="projects" class="section container">
+    <div class="grid">
+      <div class="card">
+        <h3>Project One</h3>
+        <p>Brief description of a recent project. Add 3–5 sentences here describing purpose, stack, and outcome.</p>
+      </div>
+      <div class="card">
+        <h3>Project Two</h3>
+        <p>Highlight a tutorial or build log. Keep content original and detailed to meet ad network quality guidelines.</p>
+      </div>
+      <div class="card">
+        <h3>Project Three</h3>
+        <p>Link to a repository or demo. Include screenshots and clear explanations of features and learnings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="section container">
+    <div class="grid">
+      <div class="card">
+        <h3>Blog Post #1</h3>
+        <p>Write an article of 500+ words. Unique content about development, tools, or tutorials helps with approvals.</p>
+      </div>
+      <div class="card">
+        <h3>Blog Post #2</h3>
+        <p>Share a how‑to guide or opinion piece. Add headings, code snippets, and images for engagement.</p>
+      </div>
+      <div class="card">
+        <h3>Blog Post #3</h3>
+        <p>Summarize lessons learned from a project. Include references and your personal insights.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section container">
+    <div class="grid">
+      <div class="card">
+        <h3>Contact</h3>
+        <p>Email: yourname@example.com</p>
+        <p>Social: Add links to GitHub, Twitter/X, LinkedIn.</p>
+      </div>
+      <div class="card">
+        <h3>Privacy policy</h3>
+        <p>Create a dedicated privacy.html page and link it here. Mention cookies/analytics if used and your data practices.</p>
+      </div>
+      <div class="card">
+        <h3>About</h3>
+        <p>Introduce yourself, your interests, and what visitors will find here. Keep it friendly and straightforward.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <span>&copy; 2025 Gauransh — All rights reserved.</span>
+        <span>
+          <a href="privacy.html">Privacy</a> ·
+          <a href="#">Terms</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
